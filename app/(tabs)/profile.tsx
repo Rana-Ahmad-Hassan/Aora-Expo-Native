@@ -33,7 +33,7 @@ const Profile = () => {
     <SafeAreaView className="bg-primary h-full">
       <FlatList
         data={data}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.$id.toString()}
         renderItem={({ item }) => (
           <View className="mb-4 mx-5 mt-10">
             <Card item={item} />

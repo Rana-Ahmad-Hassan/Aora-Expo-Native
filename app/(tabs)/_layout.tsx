@@ -41,7 +41,7 @@ const TabLayout = () => {
           borderTopWidth: 1,
           borderTopColor: "#232533",
           height: 84,
-          paddingTop:10
+          paddingTop: 10,
         },
       }}
     >
@@ -49,7 +49,7 @@ const TabLayout = () => {
         name="home"
         options={{
           title: "Home",
-          headerShown:false,
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <TabIcon
               icon={IconsData.home}
@@ -88,22 +88,6 @@ const TabLayout = () => {
               color={color}
               focused={focused}
               name="profile"
-            />
-          ),
-        }}
-      />
-
-      <Tabs.Screen
-        name="bookmark"
-        options={{
-          title: "Saved",
-          headerShown: false,
-          tabBarIcon: ({ color, focused }) => (
-            <TabIcon
-              icon={IconsData.bookmark}
-              color={color}
-              focused={focused}
-              name="Saved"
             />
           ),
         }}
