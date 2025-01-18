@@ -8,8 +8,9 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true
+    "ios": { 
+      "supportsTablet": true,
+      "package":"com.ss.sketchy"
     },
     "android": {
       "adaptiveIcon": {
