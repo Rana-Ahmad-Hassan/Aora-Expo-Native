@@ -34,7 +34,7 @@ const SignUp = () => {
   };
 
   return (
-    <SafeAreaView className="h-full bg-primary flex-1 justify-center items-center">
+    <SafeAreaView className="h-full bg-primary flex-1 justify-center items-center px-5">
       <ScrollView
         contentContainerStyle={{
           flexGrow: 1,
@@ -42,7 +42,7 @@ const SignUp = () => {
           alignItems: "center",
         }}
       >
-        <View className="w-full px-10">
+        <View className="w-full">
           <Image
             source={Images.logo}
             style={{ width: 100, height: 40 }}

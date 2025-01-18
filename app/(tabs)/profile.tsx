@@ -41,7 +41,7 @@ const Profile = () => {
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
-        data={data}
+        data={data || []}
         keyExtractor={(item) => item.$id}
         renderItem={({ item, index }) => (
           <View className="mb-4 mx-5 mt-10">
