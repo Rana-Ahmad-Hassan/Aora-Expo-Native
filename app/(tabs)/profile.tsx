@@ -76,7 +76,7 @@ const Profile = () => {
                     useNativeControls
                     shouldPlay
                     onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
-                      if (status.didJustFinish) {
+                      if (!status.isLoaded) {
                         setPlayingIndex(null);
                       }
                     }}

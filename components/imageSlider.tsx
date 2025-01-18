@@ -40,7 +40,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ posts, loading }) => {
           <SafeAreaView className="flex items-center">
             {/* Header */}
             <View className="absolute left-3">
-              <Text className="text-white top-10 text-lg font-light">
+              <Text className="text-white top-10 text-lg font-psemibold">
                 Trending Videos
               </Text>
             </View>
@@ -94,7 +94,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ posts, loading }) => {
                         resizeMode={ResizeMode.COVER}
                         useNativeControls
                         onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
-                          if (status.didJustFinish) {
+                          if (!status.isLoaded) {
                             setPlayingIndex(null);
                           }
                         }}

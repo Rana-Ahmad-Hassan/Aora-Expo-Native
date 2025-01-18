@@ -49,7 +49,7 @@ const Card = ({ posts }: any) => {
                     useNativeControls
                     shouldPlay
                     onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
-                      if (status.didJustFinish) {
+                      if (!status.isLoaded) {
                         setPlayingIndex(null);
                       }
                     }}

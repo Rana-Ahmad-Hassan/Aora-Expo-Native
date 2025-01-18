@@ -17,17 +17,6 @@ import useAppWrite from "@/hooks/useAppWrite";
 import SpinnerLoader from "@/components/loader";
 import { ResizeMode, Video } from "expo-av";
 
-interface Post {
-  id: number;
-  prompt: string;
-  video: string;
-  users: {
-    avatar: string;
-  };
-  createdAt: string;
-  updatedAt: string;
-  thumbnail: string;
-}
 
 const Home: React.FC = () => {
   const { user } = useGlobalContext();
