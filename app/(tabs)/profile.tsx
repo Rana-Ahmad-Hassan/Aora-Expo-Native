@@ -73,7 +73,7 @@ const Profile = () => {
                       uri: item?.video,
                     }}
                     className=" rounded-xl mt-3"
-                    style={{ width: "100%", height: 240}}
+                    style={{ width: "100%", height: 240 }}
                     resizeMode={ResizeMode.COVER}
                     useNativeControls
                     shouldPlay
@@ -107,7 +107,7 @@ const Profile = () => {
           </View>
         )}
         contentContainerStyle={{ paddingBottom: 20 }}
-        ListHeaderComponent={() => (
+        ListHeaderComponent={(item) => (
           <>
             <View className="p-4 flex items-end">
               <TouchableOpacity onPress={handleLogout}>
@@ -134,12 +134,10 @@ const Profile = () => {
 
             <View className="flex flex-row justify-center gap-16 mt-5">
               <View className="flex items-center">
-                <Text className="text-white text-xl font-psemibold">10</Text>
+                <Text className="text-white text-xl font-psemibold">
+                  {data?.length}
+                </Text>
                 <Text className="text-white text-lg">Posts</Text>
-              </View>
-              <View className="flex items-center">
-                <Text className="text-white text-xl font-psemibold">5</Text>
-                <Text className="text-white text-lg">Views</Text>
               </View>
             </View>
           </>
