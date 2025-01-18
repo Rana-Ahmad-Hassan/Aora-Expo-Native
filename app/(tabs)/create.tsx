@@ -14,6 +14,7 @@ import { useGlobalContext } from "@/context/GlobalProvider";
 import { ResizeMode, Video } from "expo-av";
 import icons from "@/constants/icons";
 import Button from "@/components/button";
+import { createVideo } from "@/lib/appWrite";
 
 interface DocumentPicker {
   title: string;
@@ -59,6 +60,28 @@ const Create = () => {
       }, 100);
     }
   };
+
+  const handleCreateVideo = async () => {
+    if (!form.title || !form.video || !form.thumbnail || !form.prompt) {
+      Alert.alert("Error", "Please fill out all fields");
+      return;
+    }
+    try {
+      const res = await createVideo(
+        user?.accountId,
+        form.title,
+        form.prompt,
+        form.thumbnail,
+        form.video
+      );
+      if (res) {
+        Alert.alert("Success");
+      }
+    } catch (error: any) {
+      Alert.alert("Error", error.message);
+    }
+  };
+
   return (
     <SafeAreaView className="h-full bg-primary">
       <ScrollView>
@@ -137,7 +160,7 @@ const Create = () => {
 
           <Button
             title="Submit & Publish"
-            onPress={() => console.log("button press")}
+            onPress={() => handleCreateVideo()}
             customClasses="w-full"
           />
         </View>

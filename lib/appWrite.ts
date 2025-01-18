@@ -155,7 +155,7 @@ export async function searchPosts(query: any) {
     }
 }
 
-export async function getUserPosts(userId:any) {
+export async function getUserPosts(userId: any) {
     console.log(userId)
     try {
         const posts = await databases.listDocuments(
@@ -164,6 +164,26 @@ export async function getUserPosts(userId:any) {
             [Query.equal("user", userId)]
         );
         return posts.documents;
+    } catch (error: any) {
+        throw new Error(error);
+    }
+}
+
+export async function createVideo(userId: any, title: string, prompt: string, thumbnail: string, video: string) {
+    try {
+        const newVideo = await databases.createDocument(
+            config.databaseId,
+            config.videoCollectionId,
+            ID.unique(),
+            {
+                user: userId,
+                title: title,
+                prompt: prompt,
+                video: video,
+                thumbnail: thumbnail
+            }
+        );
+        return newVideo;
     } catch (error: any) {
         throw new Error(error);
     }

@@ -91,7 +91,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ posts, loading }) => {
                         source={{ uri: item.video }}
                         style={{ width: "100%", height: "100%" }}
                         shouldPlay
-                        resizeMode={ResizeMode.CONTAIN}
+                        resizeMode={ResizeMode.COVER}
                         useNativeControls
                         onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
                           if (status.didJustFinish) {

@@ -8,15 +8,17 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "ios": { 
+    "ios": {
       "supportsTablet": true,
-      "package":"com.ss.sketchy"
+      "package": "com.ss.sketchy",
+      "bundleIdentifier": "com.ahmad.aora"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ahmad.aora"
     },
     "web": {
       "bundler": "metro",
@@ -37,6 +39,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "5deb90d9-dfec-458f-b174-1b04de8cad21"
+      }
     }
   }
 }

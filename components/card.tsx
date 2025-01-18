@@ -16,7 +16,7 @@ const Card = ({ posts }: any) => {
       {posts?.map((item: any, i: number) => {
         return (
           <View key={i} className="flex-1 items-center justify-center my-6 ">
-            <View className="w-full rounded-lg shadow-lg py-1">
+            <View className="w-full rounded-lg shadow-lg py-3">
               <View className="flex-row items-center justify-between">
                 <Image
                   source={{
@@ -45,7 +45,7 @@ const Card = ({ posts }: any) => {
                     }}
                     className=" rounded-xl mt-3"
                     style={{ width: "100%", height: "100%" }}
-                    resizeMode={ResizeMode.CONTAIN}
+                    resizeMode={ResizeMode.COVER}
                     useNativeControls
                     shouldPlay
                     onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
