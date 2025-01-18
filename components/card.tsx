@@ -8,15 +8,19 @@ const Card = ({ posts }: any) => {
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
 
   const handlePlay = (index: number) => {
-    setPlayingIndex(index);
+    if (playingIndex !== index) {
+      setPlayingIndex(index);
+    } else {
+      setPlayingIndex(null);
+    }
   };
 
   return (
     <>
       {posts?.map((item: any, i: number) => {
         return (
-          <View key={i} className="flex-1 items-center justify-center my-6 ">
-            <View className="w-full rounded-lg shadow-lg py-3">
+          <View key={i} className="flex-1 items-center justify-center my-6">
+            <View className="w-full rounded-lg shadow-lg py-3 h-full">
               <View className="flex-row items-center justify-between">
                 <Image
                   source={{
@@ -38,41 +42,46 @@ const Card = ({ posts }: any) => {
               </View>
 
               <View className="mt-4 relative">
-                {playingIndex === i ? (
-                  <Video
-                    source={{
-                      uri: item?.video,
-                    }}
-                    className=" rounded-xl mt-3"
-                    style={{ width: "100%", height: "100%" }}
-                    resizeMode={ResizeMode.COVER}
-                    useNativeControls
-                    shouldPlay
-                    onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
-                      if (!status.isLoaded) {
-                        setPlayingIndex(null);
-                      }
-                    }}
-                  />
-                ) : (
-                  <TouchableOpacity
-                    activeOpacity={0.7}
-                    onPress={() => handlePlay(i)}
-                    className="w-full h-60 rounded-xl mt-3 relative flex justify-center items-center"
-                  >
-                    <Image
-                      source={{ uri: item.thumbnail }}
-                      className="w-full h-full rounded-xl mt-3"
-                      resizeMode="cover"
+                <View
+                  className="w-full h-60 rounded-xl mt-3 relative"
+                  style={{ width: "100%", height: 240 }} 
+                >
+                  {playingIndex === i ? (
+                    <Video
+                      source={{
+                        uri: item?.video,
+                      }}
+                      className="rounded-xl"
+                      style={{ width: "100%", height: "100%" }}
+                      resizeMode={ResizeMode.COVER}
+                      useNativeControls
+                      shouldPlay
+                      onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
+                        if (status.didJustFinish) {
+                          setPlayingIndex(null);
+                        }
+                      }}
                     />
+                  ) : (
+                    <TouchableOpacity
+                      activeOpacity={0.7}
+                      onPress={() => handlePlay(i)}
+                      className="w-full h-full rounded-xl flex justify-center items-center"
+                    >
+                      <Image
+                        source={{ uri: item.thumbnail }}
+                        className="w-full h-full rounded-xl"
+                        resizeMode="cover"
+                      />
 
-                    <Image
-                      source={Icons.play}
-                      className="w-12 h-12 absolute"
-                      resizeMode="contain"
-                    />
-                  </TouchableOpacity>
-                )}
+                      <Image
+                        source={Icons.play}
+                        className="w-12 h-12 absolute"
+                        resizeMode="contain"
+                      />
+                    </TouchableOpacity>
+                  )}
+                </View>
               </View>
             </View>
           </View>

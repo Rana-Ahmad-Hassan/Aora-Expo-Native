@@ -156,7 +156,6 @@ export async function searchPosts(query: any) {
 }
 
 export async function getUserPosts(userId: any) {
-    console.log(userId)
     try {
         const posts = await databases.listDocuments(
             config.databaseId,

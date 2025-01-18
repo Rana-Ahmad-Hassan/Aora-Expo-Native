@@ -22,7 +22,11 @@ const Profile = () => {
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
 
   const handlePlay = (index: number) => {
-    setPlayingIndex(index);
+    if (playingIndex !== index) {
+      setPlayingIndex(index);
+    } else {
+      setPlayingIndex(null);
+    }
   };
 
   const handleLogout = () => {
@@ -33,8 +37,6 @@ const Profile = () => {
   const { data, loading } = useAppWrite({
     fn: () => getUserPosts(user?.accountId),
   });
-
-  console.log("users created videos", data);
 
   return (
     <SafeAreaView className="bg-primary h-full">
@@ -71,12 +73,12 @@ const Profile = () => {
                       uri: item?.video,
                     }}
                     className=" rounded-xl mt-3"
-                    style={{ width: "100%", height: "85%" }}
+                    style={{ width: "100%", height: 240}}
                     resizeMode={ResizeMode.COVER}
                     useNativeControls
                     shouldPlay
                     onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
-                      if (!status.isLoaded) {
+                      if (status.didJustFinish) {
                         setPlayingIndex(null);
                       }
                     }}

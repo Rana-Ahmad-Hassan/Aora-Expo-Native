@@ -71,15 +71,25 @@ const Create = () => {
         user?.accountId,
         form.title,
         form.prompt,
-        form.thumbnail,
-        form.video
+        form.thumbnail.uri,
+        form.video.uri
       );
       if (res) {
         Alert.alert("Success");
+        setForm({
+          title: "",
+          video: null,
+          thumbnail: null,
+          prompt: "",
+        });
       }
     } catch (error: any) {
       Alert.alert("Error", error.message);
     }
+  };
+
+  const hanldeChange = (key: string, value: string) => {
+    setForm({ ...form, [key]: value });
   };
 
   return (
@@ -93,7 +103,7 @@ const Create = () => {
           <Input
             label="Video Title"
             inputType="text"
-            onChange={() => console.log("hey")}
+            onChange={(value) => hanldeChange("title", value)}
           />
 
           <View className="mt-7 my-3">
@@ -155,7 +165,7 @@ const Create = () => {
           <Input
             label="AI prompt"
             inputType="text"
-            onChange={() => console.log("hey")}
+            onChange={(value) => hanldeChange("prompt", value)}
           />
 
           <Button

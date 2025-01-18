@@ -94,7 +94,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ posts, loading }) => {
                         resizeMode={ResizeMode.COVER}
                         useNativeControls
                         onPlaybackStatusUpdate={(status: AVPlaybackStatus) => {
-                          if (!status.isLoaded) {
+                          if (status.didJustFinish) {
                             setPlayingIndex(null);
                           }
                         }}
